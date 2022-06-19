@@ -3,6 +3,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const primes = require('./primes.js');
+const mathfunc = require('./math_func.js');
+
 const fs = require('fs');
 
 app.get('/', function(req, res){
@@ -15,6 +17,10 @@ app.get('/', function(req, res){
 
 app.get('/isPrime/:number', function(req, res){
     res.status(200).send(primes.isPrime(req.params.number));    
+})
+
+app.get('/math_func/:number', function(req, res){
+    res.status(200).send(mathfunc.math_func(req.params.number));    
 })
 
 exports.stop = function(){
